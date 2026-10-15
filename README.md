@@ -4,7 +4,7 @@ Safi Ink Lime UI. A dense, square Obsidian theme built on the ink and lime style
 
 ![Command palette in dark mode](./screenshots/command-palette.png)
 
-|                                                |                                                  |
+| Dark THeme                                     | Ligh Theme                                       |
 | ---------------------------------------------- | ------------------------------------------------ |
 | ![SIL-UI in dark mode](./screenshots/dark.png) | ![SIL-UI in light mode](./screenshots/light.png) |
 
