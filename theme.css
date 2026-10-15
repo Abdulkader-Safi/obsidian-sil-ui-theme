@@ -44,6 +44,9 @@ body {
   --bold-weight: 600;
   --border-width: 1px;
 
+  /* Readable line length caps content at 1600px instead of 700px. */
+  --file-line-width: 1600px;
+
   /* Type roles: Display 28 bold, H2 20 semibold, Title 15 semibold. */
   --inline-title-size: 2em;
   --inline-title-weight: 700;
