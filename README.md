@@ -1,10 +1,10 @@
 # SIL-UI
 
-Safi Ink Lime UI. A dense, square Obsidian theme built on the ink and lime style from mdk (MD Kanban). Near-black ink surfaces, one lime accent, 1px hairlines, no rounded corners and no shadows. A warm paper light mode mirrors the dark one.
+Safi Ink Lime UI. A dense, square Obsidian theme built on the ink and lime style from (mdk (MD Kanban))[https://github.com/Abdulkader-Safi/md-kanban-v2]. Near-black ink surfaces, one lime accent, 1px hairlines, no rounded corners and no shadows. A warm paper light mode mirrors the dark one.
 
 ![Command palette in dark mode](./screenshots/command-palette.png)
 
-| Dark THeme                                     | Ligh Theme                                       |
+| Dark theme                                     | Light theme                                      |
 | ---------------------------------------------- | ------------------------------------------------ |
 | ![SIL-UI in dark mode](./screenshots/dark.png) | ![SIL-UI in light mode](./screenshots/light.png) |
 
