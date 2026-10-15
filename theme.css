@@ -1,0 +1,610 @@
+/* SIL-UI (Safi Ink Lime UI) for Obsidian.
+   Near-black ink surfaces, one lime accent, square corners, 1px hairlines,
+   no shadows. Schibsted Grotesk for words people wrote, JetBrains Mono for
+   machine text. Warm paper light theme mirrors the dark one.
+   Spec: System/Prompts/Design/ink-lime-ui/ink-lime-ui.md */
+
+@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+body {
+  --font-ui: 'Schibsted Grotesk', Inter, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --font-text-theme: var(--font-ui);
+  --font-interface-theme: var(--font-ui);
+  --font-monospace-theme: var(--font-mono);
+
+  /* Radius 0 everywhere. */
+  --radius-s: 0;
+  --radius-m: 0;
+  --radius-l: 0;
+  --radius-xl: 0;
+  --button-radius: 0;
+  --input-radius: 0;
+  --checkbox-radius: 0;
+  --tag-radius: 0;
+  --callout-radius: 0;
+  --code-radius: 0;
+  --modal-radius: 0;
+  --image-radius: 0;
+  --tab-radius: 0;
+  --tab-radius-active: 0;
+  --toggle-radius: 0;
+  --toggle-thumb-radius: 0;
+  --slider-thumb-radius: 0;
+  --slider-track-radius: 0;
+  --embed-border-radius: 0;
+  --scrollbar-radius: 0;
+
+  /* No shadows. Depth is a border plus a surface step. */
+  --shadow-s: none;
+  --shadow-l: none;
+  --input-shadow: none;
+  --input-shadow-hover: none;
+
+  --bold-weight: 600;
+  --border-width: 1px;
+
+  /* Type roles: Display 28 bold, H2 20 semibold, Title 15 semibold. */
+  --inline-title-size: 2em;
+  --inline-title-weight: 700;
+  --inline-title-line-height: 1.2;
+  --h1-size: 2em;
+  --h2-size: 1.43em;
+  --h3-size: 1.15em;
+  --h4-size: 1.07em;
+  --h5-size: 1em;
+  --h6-size: 0.8em;
+  --h1-weight: 700;
+  --h2-weight: 600;
+  --h3-weight: 600;
+  --h4-weight: 600;
+  --h5-weight: 600;
+  --h6-weight: 600;
+  --h1-line-height: 1.2;
+  --h2-line-height: 1.3;
+
+  --tag-size: 11px;
+  --tag-padding-x: 6px;
+  --tag-padding-y: 1px;
+  --tag-weight: 400;
+  --tag-border-width: 0;
+  --tag-decoration: none;
+  --tag-decoration-hover: none;
+
+  --blockquote-border-thickness: 2px;
+  --checkbox-size: 14px;
+
+  /* Toggle: 32 x 16 square track. */
+  --toggle-width: 32px;
+  --toggle-thumb-width: 10px;
+  --toggle-thumb-height: 10px;
+  --toggle-border-width: 3px;
+}
+
+/* ===================== Dark (default) ===================== */
+.theme-dark {
+  --sil-bg-app: #0B0B0C;
+  --sil-bg-sunken: #0F0F11;
+  --sil-bg-surface: #141416;
+  --sil-bg-raised: #1E1E22;
+  --sil-border: #2A2A2F;
+  --sil-border-strong: #3A3A41;
+  --sil-text: #F2F2EE;
+  --sil-text-muted: #9B9BA3;
+  --sil-accent-bg: #C8F031;
+  --sil-accent-bg-hover: #A9D10F;
+  --sil-accent-text: #C8F031;
+  --sil-accent-on: #0B0B0C;
+  --sil-accent-tint: rgba(200, 240, 49, 0.12);
+  --sil-selection: rgba(200, 240, 49, 0.25);
+  --sil-danger: #FF6B63;
+  --sil-scrim: rgba(0, 0, 0, 0.6);
+
+  --accent-h: 73;
+  --accent-s: 86%;
+  --accent-l: 57%;
+
+  /* Status and priority set, used for callouts and Obsidian's colour names. */
+  --color-red: #FF6B63;
+  --color-red-rgb: 255, 107, 99;
+  --color-orange: #FFA24A;
+  --color-orange-rgb: 255, 162, 74;
+  --color-yellow: #FFB020;
+  --color-yellow-rgb: 255, 176, 32;
+  --color-green: #3DDC84;
+  --color-green-rgb: 61, 220, 132;
+  --color-blue: #6FA8FF;
+  --color-blue-rgb: 111, 168, 255;
+  --color-purple: #A78BFA;
+  --color-purple-rgb: 167, 139, 250;
+  --color-base-70: #8A8A93;
+}
+
+/* ===================== Light (warm paper) ===================== */
+.theme-light {
+  --sil-bg-app: #F6F5F1;
+  --sil-bg-sunken: #EFEEE8;
+  --sil-bg-surface: #FFFFFF;
+  --sil-bg-raised: #E8E6DE;
+  --sil-border: #DCDAD2;
+  --sil-border-strong: #B9B7AE;
+  --sil-text: #0B0B0C;
+  --sil-text-muted: #5F5F66;
+  --sil-accent-bg: #C8F031;
+  --sil-accent-bg-hover: #A9D10F;
+  /* Lime fails contrast as text on paper, so text and edges use dark green. */
+  --sil-accent-text: #3F6B00;
+  --sil-accent-on: #0B0B0C;
+  --sil-accent-tint: rgba(200, 240, 49, 0.25);
+  --sil-selection: rgba(200, 240, 49, 0.5);
+  --sil-danger: #C2241C;
+  --sil-scrim: rgba(11, 11, 12, 0.3);
+
+  --accent-h: 84;
+  --accent-s: 100%;
+  --accent-l: 21%;
+
+  --color-red: #C2241C;
+  --color-red-rgb: 194, 36, 28;
+  --color-orange: #A84B00;
+  --color-orange-rgb: 168, 75, 0;
+  --color-yellow: #A84B00;
+  --color-yellow-rgb: 168, 75, 0;
+  --color-green: #16803F;
+  --color-green-rgb: 22, 128, 63;
+  --color-blue: #1F55C4;
+  --color-blue-rgb: 31, 85, 196;
+  --color-purple: #6D45D9;
+  --color-purple-rgb: 109, 69, 217;
+  --color-base-70: #6B6B74;
+}
+
+/* Map the tokens onto Obsidian's variables, once for both modes. */
+.theme-light, .theme-dark {
+  --background-primary: var(--sil-bg-surface);
+  --background-primary-alt: var(--sil-bg-sunken);
+  --background-secondary: var(--sil-bg-sunken);
+  --background-secondary-alt: var(--sil-bg-raised);
+
+  --background-modifier-border: var(--sil-border);
+  --background-modifier-border-hover: var(--sil-border-strong);
+  --background-modifier-border-focus: var(--sil-accent-text);
+  --background-modifier-form-field: var(--sil-bg-app);
+  --background-modifier-form-field-highlighted: var(--sil-bg-app);
+  --background-modifier-hover: var(--sil-bg-raised);
+  --background-modifier-active-hover: var(--sil-bg-raised);
+  --background-modifier-error: var(--sil-danger);
+  --background-modifier-error-hover: var(--sil-danger);
+  --background-modifier-cover: var(--sil-scrim);
+
+  --text-normal: var(--sil-text);
+  /* Faint text stays at muted: the spec wants 4.5:1, never lower opacity. */
+  --text-muted: var(--sil-text-muted);
+  --text-faint: var(--sil-text-muted);
+  --text-accent: var(--sil-accent-text);
+  --text-accent-hover: var(--sil-text);
+  --text-on-accent: var(--sil-accent-on);
+  --text-on-accent-inverted: var(--sil-accent-on);
+  --text-error: var(--sil-danger);
+  --text-selection: var(--sil-selection);
+  --text-highlight-bg: var(--sil-accent-bg);
+
+  --interactive-normal: transparent;
+  --interactive-hover: var(--sil-bg-raised);
+  --interactive-accent: var(--sil-accent-bg);
+  --interactive-accent-hover: var(--sil-accent-bg-hover);
+
+  --icon-color: var(--sil-text-muted);
+  --icon-color-hover: var(--sil-text);
+  --icon-color-active: var(--sil-accent-text);
+  --icon-color-focused: var(--sil-text);
+
+  --link-color: var(--sil-accent-text);
+  --link-color-hover: var(--sil-text);
+  --link-external-color: var(--sil-accent-text);
+  --link-external-color-hover: var(--sil-text);
+  --link-unresolved-color: var(--sil-text-muted);
+  --link-unresolved-opacity: 1;
+
+  --heading-color: var(--sil-text);
+  --h1-color: var(--sil-text);
+  --h2-color: var(--sil-text);
+  --h3-color: var(--sil-text);
+  --h4-color: var(--sil-text);
+  --h5-color: var(--sil-text);
+  --h6-color: var(--sil-text-muted);
+  --inline-title-color: var(--sil-text);
+
+  --hr-color: var(--sil-border);
+  --blockquote-border-color: var(--sil-border-strong);
+  --code-background: var(--sil-bg-sunken);
+  --code-normal: var(--sil-text);
+
+  --tag-background: var(--sil-bg-raised);
+  --tag-background-hover: var(--sil-bg-raised);
+  --tag-color: var(--sil-text-muted);
+  --tag-color-hover: var(--sil-text);
+
+  --checkbox-color: var(--sil-accent-bg);
+  --checkbox-color-hover: var(--sil-accent-bg-hover);
+  --checkbox-marker-color: var(--sil-accent-on);
+  --checkbox-border-color: var(--sil-border-strong);
+  --checkbox-border-color-hover: var(--sil-accent-text);
+  --checklist-done-color: var(--sil-text-muted);
+
+  --nav-item-color: var(--sil-text-muted);
+  --nav-item-color-hover: var(--sil-text);
+  --nav-item-color-active: var(--sil-text);
+  --nav-item-color-selected: var(--sil-text);
+  --nav-item-background-hover: var(--sil-bg-raised);
+  --nav-item-background-active: var(--sil-bg-raised);
+  --nav-item-background-selected: var(--sil-bg-raised);
+
+  --tab-container-background: var(--sil-bg-sunken);
+  --tab-background-active: var(--sil-bg-surface);
+  --tab-text-color: var(--sil-text-muted);
+  --tab-text-color-focused: var(--sil-text-muted);
+  --tab-text-color-focused-active: var(--sil-text);
+  --tab-text-color-focused-active-current: var(--sil-text);
+  --tab-outline-color: var(--sil-border);
+  --tab-divider-color: var(--sil-border);
+  --divider-color: var(--sil-border);
+  --divider-color-hover: var(--sil-accent-text);
+
+  --titlebar-background: var(--sil-bg-app);
+  --titlebar-background-focused: var(--sil-bg-app);
+  --titlebar-border-color: var(--sil-border);
+  --ribbon-background: var(--sil-bg-app);
+  --ribbon-background-collapsed: var(--sil-bg-app);
+  --status-bar-background: var(--sil-bg-sunken);
+  --status-bar-border-color: var(--sil-border);
+  --status-bar-text-color: var(--sil-text-muted);
+
+  --table-border-color: var(--sil-border);
+  --table-header-background: var(--sil-bg-sunken);
+  --table-header-color: var(--sil-text-muted);
+
+  --modal-background: var(--sil-bg-surface);
+  --modal-border-color: var(--sil-border-strong);
+  --menu-background: var(--sil-bg-surface);
+  --menu-border-color: var(--sil-border-strong);
+  --prompt-border-color: var(--sil-border-strong);
+  --popover-background: var(--sil-bg-surface);
+
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: var(--sil-border-strong);
+  --scrollbar-active-thumb-bg: var(--sil-text-muted);
+
+  --graph-node: var(--sil-text-muted);
+  --graph-node-focused: var(--sil-accent-text);
+  --graph-line: var(--sil-border-strong);
+}
+
+/* ponytail: one catch-all for "radius 0, no exceptions"; it also squares
+   plugin UI. Remove it if a plugin genuinely needs round shapes. */
+body, body * {
+  border-radius: 0 !important;
+}
+
+/* ===================== Workspace ===================== */
+
+/* Every region is a bordered rectangle; the ribbon sits on app ink. */
+.workspace-ribbon.mod-left {
+  border-right: 1px solid var(--sil-border);
+}
+
+/* Tabs: flat, muted. Active tab gets a 2px lime underline. */
+.workspace-tab-header::before,
+.workspace-tab-header::after {
+  display: none;
+}
+.workspace-tab-header,
+.workspace-tab-header.is-active {
+  box-shadow: none;
+}
+.workspace-tab-header-container {
+  border-bottom: 1px solid var(--sil-border);
+}
+.workspace-tab-header.is-active {
+  box-shadow: inset 0 -2px 0 var(--sil-accent-text);
+}
+.workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  font-weight: 500;
+}
+.workspace-tab-header-inner::after {
+  background-color: var(--sil-border);
+}
+.workspace-split.mod-left-split .workspace-tab-header.is-active,
+.workspace-split.mod-right-split .workspace-tab-header.is-active {
+  --icon-color: var(--sil-accent-text);
+}
+
+/* View header path reads as machine text. */
+.view-header-title-container,
+.view-header-breadcrumb,
+.view-header-title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* File tree: selected row is raised with a 2px lime left edge. */
+.tree-item-self.is-active,
+.tree-item-self.is-selected,
+.nav-file-title.is-active {
+  box-shadow: inset 2px 0 0 var(--sil-accent-text);
+  font-weight: 500;
+}
+.tree-item-self.is-active .tree-item-icon,
+.nav-file-title.is-active .tree-item-icon {
+  color: var(--sil-accent-text);
+}
+.tree-item-flair,
+.nav-file-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: var(--sil-text-muted);
+}
+
+/* Section labels: mono, uppercase, tracked, muted. */
+.setting-item-heading .setting-item-name,
+.vertical-tab-header-group-title,
+.tree-item-self.mod-root .tree-item-inner,
+.nav-folder.mod-root > .nav-folder-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sil-text-muted);
+}
+
+/* Status bar: sunken strip of mono micro caps. */
+.status-bar {
+  border-top: 1px solid var(--sil-border);
+  border-left: 1px solid var(--sil-border);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+/* ===================== Type ===================== */
+
+.markdown-rendered h1, .HyperMD-header-1, .inline-title {
+  letter-spacing: -0.01em;
+}
+.markdown-rendered h2, .HyperMD-header-2 {
+  letter-spacing: -0.005em;
+}
+/* H6 is the Label role: small, tracked caps. */
+.markdown-rendered h6, .HyperMD-header-6 {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.markdown-rendered a,
+.cm-s-obsidian span.cm-hmd-internal-link,
+.cm-s-obsidian span.cm-link,
+.cm-s-obsidian span.cm-url {
+  text-underline-offset: 3px;
+}
+
+/* Highlights: lime with ink text, as in the mdk preview. */
+.markdown-rendered mark,
+.cm-s-obsidian span.cm-highlight {
+  background-color: var(--sil-accent-bg);
+  color: var(--sil-accent-on);
+}
+
+/* Tags are label tags: raised fill, mono, muted, no border. */
+a.tag, .cm-hashtag {
+  font-family: var(--font-mono);
+}
+
+/* Key hints sit in a hairline box. */
+kbd {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  background-color: transparent;
+  border: 1px solid var(--sil-border);
+  box-shadow: none;
+  padding: 0 4px;
+}
+
+/* ===================== Content blocks ===================== */
+
+.markdown-rendered table,
+.markdown-source-view.mod-cm6 .cm-table-widget table {
+  width: 100%;
+}
+/* Table headers use the mono label role. */
+.markdown-rendered th,
+.markdown-source-view.mod-cm6 .cm-table-widget th {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.markdown-rendered blockquote {
+  font-style: normal;
+  color: var(--sil-text-muted);
+}
+
+.markdown-rendered pre,
+.HyperMD-codeblock-begin, .HyperMD-codeblock-end {
+  border: 1px solid var(--sil-border);
+}
+.markdown-rendered pre {
+  padding: 12px 16px;
+}
+.markdown-rendered pre code,
+.HyperMD-codeblock {
+  font-size: 13px;
+}
+
+/* Callouts: 2px left rule in the callout colour, 12% tint, small caps-free title. */
+.callout {
+  border: 0;
+  border-left: 2px solid rgb(var(--callout-color));
+  background-color: rgba(var(--callout-color), 0.12);
+  padding: 12px 16px;
+}
+.callout-title {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.markdown-rendered img {
+  border: 1px solid var(--sil-border);
+}
+
+/* Properties: field captions in mono label. */
+.metadata-property-key,
+.metadata-property-key-input {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sil-text-muted);
+}
+
+/* ===================== Controls ===================== */
+
+/* Default buttons are outline buttons. */
+button:not(.clickable-icon) {
+  background-color: transparent;
+  border: 1px solid var(--sil-border-strong);
+  color: var(--sil-text);
+  box-shadow: none;
+  font-weight: 500;
+}
+button:not(.clickable-icon):hover {
+  background-color: var(--sil-bg-raised);
+}
+/* Primary: the one lime fill. */
+button.mod-cta,
+button.mod-cta:hover {
+  border-color: var(--sil-accent-bg);
+  color: var(--sil-accent-on);
+}
+button.mod-cta {
+  background-color: var(--sil-accent-bg);
+}
+button.mod-cta:hover {
+  background-color: var(--sil-accent-bg-hover);
+}
+button.mod-warning {
+  background-color: transparent;
+  border-color: var(--sil-danger);
+  color: var(--sil-danger);
+}
+button.mod-warning:hover {
+  background-color: var(--sil-danger);
+  color: var(--sil-bg-surface);
+}
+
+/* Inputs: app ink (white on paper), hairline, lime border on focus. */
+.theme-light {
+  --background-modifier-form-field: #FFFFFF;
+  --background-modifier-form-field-highlighted: #FFFFFF;
+}
+input[type='text'], input[type='search'], input[type='email'],
+input[type='password'], input[type='number'], input[type='date'],
+input[type='datetime-local'], textarea, select, .dropdown {
+  border: 1px solid var(--sil-border);
+  box-shadow: none;
+}
+input[type='text']:focus, input[type='search']:focus,
+input[type='email']:focus, input[type='password']:focus,
+input[type='number']:focus, input[type='date']:focus,
+input[type='datetime-local']:focus, textarea:focus,
+select:focus, .dropdown:focus, .dropdown:focus-visible, select:focus-visible {
+  border-color: var(--sil-accent-text);
+  box-shadow: none;
+}
+
+/* Toggle: hairline track with a muted knob; lime track, ink knob when on. */
+.checkbox-container {
+  background-color: transparent;
+  outline: 1px solid var(--sil-border-strong);
+  outline-offset: -1px;
+  box-shadow: none;
+}
+.checkbox-container::after {
+  background-color: var(--sil-text-muted);
+  box-shadow: none;
+}
+.checkbox-container.is-enabled {
+  background-color: var(--sil-accent-bg);
+  outline-color: var(--sil-accent-bg);
+}
+.checkbox-container.is-enabled::after {
+  background-color: var(--sil-accent-on);
+}
+
+/* Slider thumb as a square. */
+input[type='range']::-webkit-slider-thumb {
+  background: var(--sil-accent-bg);
+  border: 1px solid var(--sil-accent-on);
+  box-shadow: none;
+}
+
+/* ===================== Floating surfaces ===================== */
+
+.modal, .prompt, .menu, .suggestion-container, .popover.hover-popover,
+.notice, .tooltip {
+  border: 1px solid var(--sil-border-strong);
+  box-shadow: none;
+}
+.menu, .suggestion-container {
+  padding: 4px;
+}
+.menu-item.selected:not(.is-disabled):not(.is-label),
+.suggestion-item.is-selected {
+  background-color: var(--sil-bg-raised);
+}
+/* Command palette: flat input over a hairline, selected row gets the lime edge. */
+.prompt-input-container {
+  border-bottom: 1px solid var(--sil-border);
+}
+.prompt-input-container input.prompt-input,
+.prompt-input-container input.prompt-input:focus {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+}
+.prompt .suggestion-item.is-selected {
+  box-shadow: inset 2px 0 0 var(--sil-accent-text);
+}
+.prompt-instructions, .suggestion-hotkey, .suggestion-flair, .suggestion-note {
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+/* Toast: surface with a strong hairline, small text. */
+.notice {
+  background-color: var(--sil-bg-surface);
+  color: var(--sil-text);
+  font-size: 12px;
+}
+.tooltip {
+  background-color: var(--sil-bg-surface);
+  color: var(--sil-text);
+}
+
+/* Settings: active nav row is raised with the lime left edge. */
+body:not(.is-phone) .vertical-tab-header-group-items .vertical-tab-nav-item.is-active,
+body:not(.is-phone) .vertical-tab-header-group-items .vertical-tab-nav-item.is-active:hover {
+  --icon-color: var(--sil-accent-text);
+  background-color: var(--sil-bg-raised);
+  color: var(--sil-text);
+  box-shadow: inset 2px 0 0 var(--sil-accent-text);
+  font-weight: 500;
+}
+.modal.mod-settings .vertical-tab-header {
+  border-right: 1px solid var(--sil-border);
+}
