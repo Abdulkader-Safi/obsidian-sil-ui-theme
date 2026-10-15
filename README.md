@@ -30,7 +30,7 @@ Switch modes under Settings > Appearance > Base color scheme.
 
 ## Fonts
 
-Schibsted Grotesk for UI and body text, JetBrains Mono for code and machine text. The theme loads both from Google Fonts, so the first load needs an internet connection. To work fully offline, install both on your system. Fallbacks are Inter then system-ui, and ui-monospace then Menlo.
+Schibsted Grotesk for UI and body text, JetBrains Mono for code and machine text. Both are embedded in `theme.css` (Latin subset, SIL Open Font License), so the theme works offline and makes no network calls. Fallbacks are Inter then system-ui, and ui-monospace then Menlo.
 
 ## Install
 
